@@ -4,7 +4,7 @@ import poker.handtype._
 
 trait HandType {
   /**
-    *  @param hand sorted collection of five [[poker.Card]]s
+    *  @param hand collection of five [[poker.Card]]s
     *  @return tuple of type of hand and kicker cards, both optional
     */
   def status(hand: Hand): (Option[HandType], Option[Kickers])

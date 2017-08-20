@@ -1,15 +1,7 @@
-package poker.model
-
-import poker.{Card, Rank, Suit}
+package poker
 
 final class CardTest extends org.scalatest.FunSuite {
   import Card._
-
-  private def doIntercept(s: String) = {
-    intercept[IllegalArgumentException] {
-      Card(s)
-    }
-  }
 
   private val validCards = Traversable("2H", "9C", "JD", "QS", "KH", "AH")
   private val onlySuits = Traversable("H", "C", "D", "S")
@@ -25,13 +17,35 @@ final class CardTest extends org.scalatest.FunSuite {
     onlyRanks.foreach(doIntercept)
     invalidNumberOfChars.foreach(doIntercept)
     invalidChars.foreach(doIntercept)
+
+    def doIntercept(s: String) = {
+      intercept[IllegalArgumentException] {
+        Card(s)
+      }
+    }
   }
 
   test("isValid") {
     assert(validCards.forall(isValid))
-    assert(onlySuits.forall(!isValid(_)))
-    assert(onlyRanks.forall(!isValid(_)))
-    assert(invalidNumberOfChars.forall(!isValid(_)))
-    assert(invalidChars.forall(!isValid(_)))
+    assert(notValid(onlySuits))
+    assert(notValid(onlyRanks))
+    assert(notValid(invalidNumberOfChars))
+    assert(notValid(invalidChars))
+
+    def notValid(strings: Traversable[String]): Boolean = {
+      strings.forall(!isValid(_))
+    }
+  }
+
+  test("compare") {
+    doCompare("3C", "4C", -1)
+    doCompare("3C", "4D", -1)
+    doCompare("AH", "JS", 3)
+    doCompare("KH", "KC", 0)
+    doCompare("TS", "2S", 8)
+
+    def doCompare(c1: String, c2: String, res: Int): Unit = {
+      assert(Card(c1).compare(Card(c2)) === res)
+    }
   }
 }

@@ -3,11 +3,15 @@ package poker
 /**
   *
   */
-final class Hand private (val cards: Vector[Card]) {
+final class Hand private (val cards: List[Card]) {
   def hasConsecutiveCards: Boolean = hasConsecutiveCardsStartingWith(lowestRank)
 
+  def hasConsecutiveCardsStartingWith(start: Char): Boolean = {
+    hasConsecutiveCardsStartingWith(Utils.rankAsInt(start))
+  }
+
   def hasConsecutiveCardsStartingWith(start: Int): Boolean = {
-    ranksSorted == Vector.tabulate(length)(_ + start)
+    ranksSorted == List.tabulate(length)(_ + start)
   }
 
   def sameAs(that: Hand): Boolean = this.cards == that.cards
@@ -18,24 +22,24 @@ final class Hand private (val cards: Vector[Card]) {
 
   lazy val lowestRank: Int = ranksSorted.head
 
-  lazy val ranks: Vector[Int] = cards.map(_.rankAsInt)
+  lazy val ranks: List[Int] = cards.map(_.rankAsInt)
 
-  lazy val ranksSorted: Vector[Int] = ranks.sorted
+  lazy val ranksSorted: List[Int] = ranks.sorted
 
   lazy val sorted: Hand = Hand(cards.sorted)
 
-  lazy val suits: Vector[Suit] = cards.map(_.suit)
+  lazy val suits: List[Suit] = cards.map(_.suit)
 }
 
 object Hand {
   def apply(cards: Traversable[Card]): Hand = {
     validate(cards)
 
-    new Hand(cards.toVector)
+    new Hand(cards.toList)
   }
 
   def fromStrings(strings: Traversable[String]): Hand = {
-    Hand(strings.toVector.map(Card(_)))
+    Hand(strings.toList.map(Card(_)))
   }
 
   private def validate(cards: Traversable[Card]): Unit = {
