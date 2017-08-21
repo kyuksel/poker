@@ -1,4 +1,4 @@
-package poker
+package poker.handtype
 
 import org.scalatest.FunSuite
 

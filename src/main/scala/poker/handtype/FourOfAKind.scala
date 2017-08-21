@@ -1,7 +1,7 @@
 package poker.handtype
 
-import poker.{Hand, HandType, Kickers}
+import poker.{Hand, Kickers}
 
 final class FourOfAKind extends HandType {
-  override def status(hand: Hand): (Option[HandType], Option[Kickers]) = ???
+  override def doAnalyze(hand: Hand): (Option[HandType], Option[Kickers]) = ???
 }

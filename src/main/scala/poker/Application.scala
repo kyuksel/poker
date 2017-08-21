@@ -1,5 +1,7 @@
 package poker
 
+import poker.handtype.HandType
+
 /**
   *
   */
