@@ -13,4 +13,14 @@ final class HandAnalyzerTest extends FunSuite {
     assert(royalFlushAnalyzer.analyze(royalFlushMixed) === (Some(HandType.RoyalFlush), None))
     assert(royalFlushAnalyzer.analyze(straight) === (None, None))
   }
+
+  test("StraightFlush") {
+    val royalFlushAnalyzer = new StraightFlushAnalyzer
+
+    assert(royalFlushAnalyzer.analyze(royalFlush) === (Some(HandType.StraightFlush), None))
+    assert(royalFlushAnalyzer.analyze(royalFlushMixed) === (Some(HandType.StraightFlush), None))
+    assert(royalFlushAnalyzer.analyze(straightFlush) === (Some(HandType.StraightFlush), None))
+    assert(royalFlushAnalyzer.analyze(straightFlushMixed) === (Some(HandType.StraightFlush), None))
+    assert(royalFlushAnalyzer.analyze(twoPair) === (None, None))
+  }
 }
