@@ -13,6 +13,8 @@ final case class Card private(r: Rank, s: Suit) extends Ordered[Card] {
   def suit: Suit = s
 
   def compare(that: Card): Int = this.rankAsInt - that.rankAsInt
+
+  override def toString: String = s""""${r.char}${s.char}""""
 }
 
 object Card {

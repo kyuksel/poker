@@ -3,7 +3,7 @@ package poker.handanalyzer
 import poker.{Hand, HandStatus}
 
 trait HandAnalyzer {
-  /**  Sort hand and delegate analysis to implementers
+  /**  Sort hand and delegate analysis to implementers of doAnalyze()
     *
     *  @param hand collection of five [[poker.Card]]s
     *  @return tuple of type of hand and kicker cards, both optional

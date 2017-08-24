@@ -8,6 +8,12 @@ final case class HandStatus(hto: Option[HandType], ko: Option[Kickers]) {
   }
 
   def notSameAs(that: HandStatus): Boolean = !sameAs(that)
+
+  override def toString: String = (hto, ko) match {
+    case (Some(handType), Some(kickers)) => s"$handType with $kickers"
+    case (Some(handType), None) => s"$handType"
+    case _ => "Empty hand"
+  }
 }
 
 object HandStatus {
@@ -16,4 +22,6 @@ object HandStatus {
   def apply(): HandStatus = HandStatus(None, None)
 
   def none: HandStatus = HandStatus()
+
+  def nonEmpty(hs: HandStatus): Boolean = hs.hto.nonEmpty
 }

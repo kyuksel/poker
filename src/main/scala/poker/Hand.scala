@@ -17,6 +17,8 @@ final class Hand private (val cs: Vector[Card]) {
   def sameAs(that: Hand): Boolean = this.cs == that.cs
   def notSameAs(that: Hand): Boolean = !sameAs(that)
 
+  override def toString: String = s"Hand(${cs.toString})"
+
   lazy val hasSameSuit: Boolean = suits.toSet.size == 1
 
   lazy val length: Int = cs.length
@@ -42,8 +44,8 @@ object Hand {
     new Hand(cards.toVector)
   }
 
-  def fromStrings(strings: Traversable[String]): Hand = {
-    Hand(strings.toVector.map(Card(_)))
+  def fromStrings(string: String, strings: String*): Hand = {
+    Hand((string +: strings.toVector).map(Card(_)))
   }
 
   private def validate(cards: Traversable[Card]): Unit = {

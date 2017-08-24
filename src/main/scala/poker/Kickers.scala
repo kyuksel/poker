@@ -5,6 +5,11 @@ package poker
   * but that may be used to break ties between hands of the same rank
   */
 final case class Kickers(cards: Vector[Card]) {
+  override def toString: String = {
+    val sOpt = if (cards.size > 1) "s" else ""
+    s"kicker$sOpt ${cards.mkString(", ")}"
+  }
+
   lazy val sorted: Vector[Card] = cards.sorted
 
   lazy val ranks: Vector[Int] = cards.map(_.rankAsInt)
@@ -17,6 +22,7 @@ final case class Kickers(cards: Vector[Card]) {
 object Kickers {
   def apply(card: Card): Kickers = Kickers(Vector(card))
 
-  def fromString(strings: Traversable[String]): Kickers = Kickers(strings.map(Card(_)).toVector)
-  def fromString(string: String): Kickers = Kickers.fromString(Traversable(string))
+  def fromStrings(string: String, strings: String*): Kickers = {
+    Kickers((string +: strings.toVector).map(Card(_)))
+  }
 }

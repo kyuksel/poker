@@ -4,22 +4,24 @@ import org.scalatest.FunSuite
 import TestHelpers._
 
 final class HandStatusTest extends FunSuite {
+  val QC = Card("QC")
+
   test("sameAs") {
-    assert(straightFlushWithJackKickerStatus sameAs HandStatus(
+    assert(straightFlushWithQueenKickerStatus sameAs HandStatus(
       Some(HandType.StraightFlush),
-      Some(Kickers(Card("JC")))))
+      Some(Kickers(QC))))
 
-    assert(straightFlushWithJackKickerStatus notSameAs HandStatus(
+    assert(straightFlushWithQueenKickerStatus notSameAs HandStatus(
       Some(HandType.StraightFlush),
-      Some(Kickers.fromString(List("JC", "8H")))))
+      Some(Kickers.fromStrings("QC", "8H"))))
 
-    assert(straightFlushWithJackKickerStatus notSameAs HandStatus(
+    assert(straightFlushWithQueenKickerStatus notSameAs HandStatus(
       Some(HandType.StraightFlush),
       None))
 
-    assert(straightFlushWithJackKickerStatus notSameAs HandStatus(
+    assert(straightFlushWithQueenKickerStatus notSameAs HandStatus(
       None,
-      Some(Kickers(Card("JC")))))
+      Some(Kickers(QC))))
 
     assert(HandStatus.none sameAs HandStatus())
   }

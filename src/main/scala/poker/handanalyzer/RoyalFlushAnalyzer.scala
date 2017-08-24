@@ -1,6 +1,6 @@
 package poker.handanalyzer
 
-import poker._
+import poker.{Hand, HandStatus, HandType, Utils}
 
 final class RoyalFlushAnalyzer extends HandAnalyzer {
   /** Detect any T-J-Q-K-A, all of the same suit */
