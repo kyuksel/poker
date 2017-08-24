@@ -11,7 +11,7 @@ object Application extends App {
     }
   }
 
-  def determineWinnerHand(hands: Traversable[Hand]): Hand = ???
+  def determineWinnerHand(hand1: Hand, hand2: Hand): Hand = ???
 
   def determineBestHand(cards: Traversable[Card]): Hand = ???
 }
