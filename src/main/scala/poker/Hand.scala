@@ -1,9 +1,9 @@
 package poker
 
-/**
-  *
-  */
-final class Hand private (val cards: List[Card]) {
+/** Set of five poker cards */
+final class Hand private (val cs: Vector[Card]) {
+  def cards: Traversable[Card] = cs
+
   def hasConsecutiveCards: Boolean = hasConsecutiveCardsStartingWith(lowestRank)
 
   def hasConsecutiveCardsStartingWith(start: Char): Boolean = {
@@ -11,35 +11,39 @@ final class Hand private (val cards: List[Card]) {
   }
 
   def hasConsecutiveCardsStartingWith(start: Int): Boolean = {
-    ranksSorted == List.tabulate(length)(_ + start)
+    ranksSorted == Vector.tabulate(length)(_ + start)
   }
 
-  def sameAs(that: Hand): Boolean = this.cards == that.cards
+  def sameAs(that: Hand): Boolean = this.cs == that.cs
+  def notSameAs(that: Hand): Boolean = !sameAs(that)
 
   lazy val hasSameSuit: Boolean = suits.toSet.size == 1
 
-  lazy val length: Int = cards.length
+  lazy val length: Int = cs.length
+
+  lazy val sorted: Hand = Hand(cs.sorted)
+
+  lazy val suits: Vector[Suit] = cs.map(_.suit)
+
+  lazy val ranks: Vector[Int] = cs.map(_.rankAsInt)
+  lazy val ranksSorted: Vector[Int] = ranks.sorted
 
   lazy val lowestRank: Int = ranksSorted.head
+  lazy val highestRank: Int = ranksSorted.last
 
-  lazy val ranks: List[Int] = cards.map(_.rankAsInt)
-
-  lazy val ranksSorted: List[Int] = ranks.sorted
-
-  lazy val sorted: Hand = Hand(cards.sorted)
-
-  lazy val suits: List[Suit] = cards.map(_.suit)
+  lazy val lowestRankCard: Card = sorted.cards.head
+  lazy val highestRankCard: Card = sorted.cards.last
 }
 
 object Hand {
   def apply(cards: Traversable[Card]): Hand = {
     validate(cards)
 
-    new Hand(cards.toList)
+    new Hand(cards.toVector)
   }
 
   def fromStrings(strings: Traversable[String]): Hand = {
-    Hand(strings.toList.map(Card(_)))
+    Hand(strings.toVector.map(Card(_)))
   }
 
   private def validate(cards: Traversable[Card]): Unit = {

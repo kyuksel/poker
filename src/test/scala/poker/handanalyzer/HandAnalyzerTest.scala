@@ -1,26 +1,26 @@
 package poker.handanalyzer
 
 import org.scalatest.FunSuite
-import poker.{HandType, TestHelpers}
+import poker.{HandStatus, HandType, TestHelpers}
 
 final class HandAnalyzerTest extends FunSuite {
   import TestHelpers._
 
-  test("RoyalFlush") {
+  test("RoyalFlushAnalyzer") {
     val royalFlushAnalyzer = new RoyalFlushAnalyzer
 
-    assert(royalFlushAnalyzer.analyze(royalFlush) === (Some(HandType.RoyalFlush), None))
-    assert(royalFlushAnalyzer.analyze(royalFlushMixed) === (Some(HandType.RoyalFlush), None))
-    assert(royalFlushAnalyzer.analyze(straight) === (None, None))
+    assert(royalFlushAnalyzer.analyze(royalFlush) === HandStatus(HandType.RoyalFlush), None)
+    assert(royalFlushAnalyzer.analyze(royalFlushMixed) === HandStatus(HandType.RoyalFlush), None)
+    assert(royalFlushAnalyzer.analyze(straight) === HandStatus.none)
   }
 
-  test("StraightFlush") {
-    val royalFlushAnalyzer = new StraightFlushAnalyzer
+  test("StraightFlushAnalyzer") {
+    val straightFlushAnalyzer = new StraightFlushAnalyzer
 
-    assert(royalFlushAnalyzer.analyze(royalFlush) === (Some(HandType.StraightFlush), None))
-    assert(royalFlushAnalyzer.analyze(royalFlushMixed) === (Some(HandType.StraightFlush), None))
-    assert(royalFlushAnalyzer.analyze(straightFlush) === (Some(HandType.StraightFlush), None))
-    assert(royalFlushAnalyzer.analyze(straightFlushMixed) === (Some(HandType.StraightFlush), None))
-    assert(royalFlushAnalyzer.analyze(twoPair) === (None, None))
+    assert(straightFlushAnalyzer.analyze(royalFlush) === HandStatus(HandType.StraightFlush, aceKicker))
+    assert(straightFlushAnalyzer.analyze(royalFlushMixed) === HandStatus(HandType.StraightFlush, aceKicker))
+    assert(straightFlushAnalyzer.analyze(straightFlush) === HandStatus(HandType.StraightFlush, queenKicker))
+    assert(straightFlushAnalyzer.analyze(straightFlushMixed) === HandStatus(HandType.StraightFlush, queenKicker))
+    assert(straightFlushAnalyzer.analyze(twoPair) === HandStatus.none)
   }
 }

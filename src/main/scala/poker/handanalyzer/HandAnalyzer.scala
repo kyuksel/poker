@@ -1,6 +1,6 @@
 package poker.handanalyzer
 
-import poker.{Hand, HandType, Kickers}
+import poker.{Hand, HandStatus}
 
 trait HandAnalyzer {
   /**  Sort hand and delegate analysis to implementers
@@ -8,11 +8,9 @@ trait HandAnalyzer {
     *  @param hand collection of five [[poker.Card]]s
     *  @return tuple of type of hand and kicker cards, both optional
     */
-  def analyze(hand: Hand): (Option[HandType], Option[Kickers]) = {
-    doAnalyze(hand.sorted)
-  }
+  def analyze(hand: Hand): HandStatus = doAnalyze(hand.sorted)
 
-  def doAnalyze(hand: Hand): (Option[HandType], Option[Kickers])
+  def doAnalyze(hand: Hand): HandStatus
 }
 
 object HandAnalyzer {

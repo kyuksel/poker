@@ -1,14 +1,14 @@
 package poker.handanalyzer
 
-import poker.{Hand, HandType, Kickers, Utils}
+import poker._
 
 final class RoyalFlushAnalyzer extends HandAnalyzer {
-  /** Detect T-J-Q-K-A, all of the same suit */
-  override def doAnalyze(hand: Hand): (Option[HandType], Option[Kickers]) = {
+  /** Detect any T-J-Q-K-A, all of the same suit */
+  override def doAnalyze(hand: Hand): HandStatus = {
     if (hand.hasSameSuit && hand.hasConsecutiveCardsStartingWith(Utils.rankAsInt('T'))) {
-      (Some(HandType.RoyalFlush), None)
+      HandStatus(HandType.RoyalFlush)
     } else {
-      (None, None)
+      HandStatus.none
     }
   }
 }

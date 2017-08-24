@@ -1,7 +1,7 @@
 package poker.handanalyzer
 
-import poker.{Hand, HandType, Kickers}
+import poker.{Hand, HandStatus}
 
 final class TwoPairAnalyzer extends HandAnalyzer {
-  override def doAnalyze(hand: Hand): (Option[HandType], Option[Kickers]) = ???
+  override def doAnalyze(hand: Hand): HandStatus = ???
 }

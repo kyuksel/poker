@@ -1,14 +1,14 @@
 package poker.handanalyzer
 
-import poker.{Hand, HandType, Kickers}
+import poker.{Hand, HandStatus, HandType, Kickers}
 
 final class StraightFlushAnalyzer extends HandAnalyzer {
   /** Detect any straight with all five cards of the same suit */
-  override def doAnalyze(hand: Hand): (Option[HandType], Option[Kickers]) = {
+  override def doAnalyze(hand: Hand): HandStatus = {
     if (hand.hasSameSuit && hand.hasConsecutiveCards) {
-      (Some(HandType.StraightFlush), None)
+      HandStatus(HandType.StraightFlush, Kickers(hand.highestRankCard))
     } else {
-      (None, None)
+      HandStatus.none
     }
   }
 }
