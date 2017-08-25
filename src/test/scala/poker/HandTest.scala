@@ -17,8 +17,8 @@ final class HandTest extends FunSuite {
   }
 
   test("sorted") {
-    assert(royalFlushMixed.sorted sameAs royalFlush)
-    assert(straightMixed.sorted sameAs straight)
+    assert(royalFlushMixed.sorted isSameAs royalFlush)
+    assert(straightMixed.sorted isSameAs straight)
   }
 
 }

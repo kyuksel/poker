@@ -3,7 +3,7 @@ package poker
 import poker.handanalyzer.{RoyalFlushAnalyzer, StraightFlushAnalyzer}
 
 object Application extends App {
-  def categorizeHand(hand: Hand): HandStatus = {
+  def classify(hand: Hand): HandStatus = {
     //HandAnalyzer.all.map(_.analyze(hand)).find(HandStatus.nonEmpty) match {
     Seq(new RoyalFlushAnalyzer, new StraightFlushAnalyzer).map(_.analyze(hand)).find(HandStatus.nonEmpty) match {
       case Some(handStatus) => handStatus
@@ -11,7 +11,23 @@ object Application extends App {
     }
   }
 
-  def determineWinnerHand(hand1: Hand, hand2: Hand): Hand = ???
+  def determineWinner(hands: Hand*): Hand = ???
+/*
+  {
+    val handsByOptionalStatus: Map[HandStatus, Seq[Hand]] = hands.groupBy(classify)
 
-  def determineBestHand(cards: Traversable[Card]): Hand = ???
+    assert(
+      handsByOptionalStatus.forall { case (status, _) => status.isTypeKnown },
+      "Cannot determine winner when not all hands' types are classifiable")
+
+    handsByOptionalStatus.map()
+
+
+
+    val strongestHands: (HandType, Seq[(HandType, Hand)]) = handsByType.maxBy(_._1)
+
+    if (strongestHands)
+  }
+*/
+  def bestHand(cards: Traversable[Card]): Hand = ???
 }

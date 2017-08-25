@@ -14,8 +14,8 @@ final class Hand private (val cs: Vector[Card]) {
     ranksSorted == Vector.tabulate(length)(_ + start)
   }
 
-  def sameAs(that: Hand): Boolean = this.cs == that.cs
-  def notSameAs(that: Hand): Boolean = !sameAs(that)
+  def isSameAs(that: Hand): Boolean = this.cs == that.cs
+  def isNotSameAs(that: Hand): Boolean = !isSameAs(that)
 
   override def toString: String = s"Hand(${cs.toString})"
 

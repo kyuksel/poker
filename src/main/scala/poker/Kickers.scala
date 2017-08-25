@@ -4,7 +4,11 @@ package poker
   * Cards that do not themselves take part in determining the rank of the hand,
   * but that may be used to break ties between hands of the same rank
   */
-final case class Kickers(cards: Vector[Card]) {
+final case class Kickers(cards: Vector[Card]) extends Ordered[Kickers] {
+  override def compare(that: Kickers): Int = {
+    cards.map(_.rankAsInt).max - that.cards.map(_.rankAsInt).max
+  }
+
   override def toString: String = {
     val sOpt = if (cards.size > 1) "s" else ""
     s"kicker$sOpt ${cards.mkString(", ")}"

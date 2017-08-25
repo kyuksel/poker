@@ -7,7 +7,7 @@ final class HandStatusTest extends FunSuite {
   val QC = Card("QC")
 
   test("sameAs") {
-    assert(straightFlushWithQueenKickerStatus sameAs HandStatus(
+    assert(straightFlushWithQueenKickerStatus isSameAs HandStatus(
       Some(HandType.StraightFlush),
       Some(Kickers(QC))))
 
@@ -23,6 +23,6 @@ final class HandStatusTest extends FunSuite {
       None,
       Some(Kickers(QC))))
 
-    assert(HandStatus.none sameAs HandStatus())
+    assert(HandStatus.none isSameAs HandStatus())
   }
 }

@@ -6,6 +6,6 @@ import TestHelpers._
 
 final class ApplicationTest extends FunSuite {
   test("categorizeHand") {
-    assert(categorizeHand(straightFlushMixed) === straightFlushWithQueenKickerStatus)
+    assert(classify(straightFlushMixed) === straightFlushWithQueenKickerStatus)
   }
 }
