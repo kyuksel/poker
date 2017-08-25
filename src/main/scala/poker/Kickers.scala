@@ -5,6 +5,8 @@ package poker
   * but that may be used to break ties between hands of the same rank
   */
 final case class Kickers(cards: Vector[Card]) extends Ordered[Kickers] {
+  /** Compare the strongest of the kickers */
+  // TODO Do we need to consider more than just the strongest kicker cards?
   override def compare(that: Kickers): Int = {
     cards.map(_.rankAsInt).max - that.cards.map(_.rankAsInt).max
   }

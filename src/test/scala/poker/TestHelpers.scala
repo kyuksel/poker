@@ -14,9 +14,12 @@ object TestHelpers {
   val twoPair = Hand.fromStrings("KC", "KS", "AC", "AS", "6D")
 
   // Kickers
+  val twoKicker = Kickers.fromStrings("2D")
   val queenKicker = Kickers.fromStrings("QC")
   val aceKicker = Kickers.fromStrings("AC")
 
   // HandStatuses
   val straightFlushWithQueenKickerStatus = HandStatus(HandType.StraightFlush, queenKicker)
+  val straightFlushWithTwoKickerStatus = HandStatus(HandType.StraightFlush, twoKicker)
+  val royalFlushStatus = HandStatus(HandType.RoyalFlush)
 }

@@ -11,23 +11,16 @@ object Application extends App {
     }
   }
 
-  def determineWinner(hands: Hand*): Hand = ???
-/*
-  {
-    val handsByOptionalStatus: Map[HandStatus, Seq[Hand]] = hands.groupBy(classify)
+  def determineWinners(hands: Hand*): Set[Hand] = {
+    val handsByStatus: Map[HandStatus, Seq[Hand]] = hands.groupBy(classify)
 
     assert(
-      handsByOptionalStatus.forall { case (status, _) => status.isTypeKnown },
-      "Cannot determine winner when not all hands' types are classifiable")
+      handsByStatus.forall { case (status, _) => status.isTypeKnown },
+      "Cannot determine winner when not all hands' types are classifiable"
+    )
 
-    handsByOptionalStatus.map()
-
-
-
-    val strongestHands: (HandType, Seq[(HandType, Hand)]) = handsByType.maxBy(_._1)
-
-    if (strongestHands)
+    handsByStatus.maxBy(_._1)._2.toSet
   }
-*/
-  def bestHand(cards: Traversable[Card]): Hand = ???
+
+  def bestPossibleHand(cards: Traversable[Card]): Hand = ???
 }
