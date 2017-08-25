@@ -1,16 +1,8 @@
 package poker
 
-import poker.handanalyzer.{RoyalFlushAnalyzer, StraightFlushAnalyzer}
+import poker.handanalyzer.HandAnalyzer.classify
 
 object Application extends App {
-  def classify(hand: Hand): HandStatus = {
-    //HandAnalyzer.all.map(_.analyze(hand)).find(HandStatus.nonEmpty) match {
-    Seq(new RoyalFlushAnalyzer, new StraightFlushAnalyzer).map(_.analyze(hand)).find(HandStatus.nonEmpty) match {
-      case Some(handStatus) => handStatus
-      case _ => throw new Error("$hand could not be analyzed!")
-    }
-  }
-
   def determineWinners(hands: Hand*): Set[Hand] = {
     val handsByStatus: Map[HandStatus, Seq[Hand]] = hands.groupBy(classify)
 
@@ -22,5 +14,9 @@ object Application extends App {
     handsByStatus.maxBy(_._1)._2.toSet
   }
 
-  def bestPossibleHand(cards: Traversable[Card]): Hand = ???
+  def bestPossibleHands(cards: Card*): Set[Hand] = {
+    val allPossibleHands = cards.toSeq.combinations(5).toVector.map(Hand(_))
+
+    determineWinners(allPossibleHands: _*)
+  }
 }

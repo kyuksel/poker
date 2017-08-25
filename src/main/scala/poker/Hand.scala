@@ -44,7 +44,7 @@ object Hand {
     new Hand(cards.toVector)
   }
 
-  def fromStrings(string: String, strings: String*): Hand = {
+  def apply(string: String, strings: String*): Hand = {
     Hand((string +: strings.toVector).map(Card(_)))
   }
 

@@ -14,7 +14,7 @@ trait HandAnalyzer {
 }
 
 object HandAnalyzer {
-  def all: Seq[HandAnalyzer] = {
+  val all: Seq[HandAnalyzer] =
     Seq(
       new RoyalFlushAnalyzer,
       new StraightFlushAnalyzer,
@@ -27,5 +27,12 @@ object HandAnalyzer {
       new OnePairAnalyzer,
       new HighCardAnalyzer
     )
+
+  def classify(hand: Hand): HandStatus = {
+    //all.map(_.analyze(hand)).find(HandStatus.nonEmpty) match {
+    Seq(new RoyalFlushAnalyzer, new StraightFlushAnalyzer, new HighCardAnalyzer).map(_.analyze(hand)).find(HandStatus.nonEmpty) match {
+      case Some(handStatus) => handStatus
+      case _ => throw new Error("$hand could not be analyzed!")
+    }
   }
 }

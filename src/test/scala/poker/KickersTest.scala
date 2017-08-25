@@ -7,8 +7,8 @@ final class KickersTest extends FunSuite {
     val kickerQS = s"""kicker "QS""""
     val kickers7DQS = s"""kickers "7D", "QS""""
 
-    assert(Kickers.fromStrings("QS").toString === kickerQS)
-    assert(Kickers.fromStrings("7D", "QS").toString === kickers7DQS)
+    assert(Kickers("QS").toString === kickerQS)
+    assert(Kickers("7D", "QS").toString === kickers7DQS)
   }
 
   test("compare") {
@@ -16,6 +16,6 @@ final class KickersTest extends FunSuite {
 
     assert(aceKicker > queenKicker)
     assert(queenKicker === queenKicker)
-    assert(Kickers.fromStrings("7D", "8H") < Kickers.fromStrings("2C", "TS"))
+    assert(Kickers("7D", "8H") < Kickers("2C", "TS"))
   }
 }

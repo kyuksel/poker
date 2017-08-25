@@ -4,16 +4,14 @@ import org.scalatest.FunSuite
 import TestHelpers._
 
 final class HandStatusTest extends FunSuite {
-  val QC = Card("QC")
-
   test("compare") {
     assert(straightFlushWithQueenKickerStatus === HandStatus(
       Some(HandType.StraightFlush),
-      Some(Kickers(QC))))
+      Some(Kickers("QC"))))
 
     assert(straightFlushWithQueenKickerStatus !== HandStatus(
       Some(HandType.StraightFlush),
-      Some(Kickers.fromStrings("QC", "8H"))))
+      Some(Kickers("QC", "8H"))))
 
     assert(straightFlushWithQueenKickerStatus !== HandStatus(
       Some(HandType.StraightFlush),
@@ -21,7 +19,7 @@ final class HandStatusTest extends FunSuite {
 
     assert(straightFlushWithQueenKickerStatus !== HandStatus(
       None,
-      Some(Kickers(QC))))
+      Some(Kickers("QC"))))
 
     assert(HandStatus.none === HandStatus())
 
