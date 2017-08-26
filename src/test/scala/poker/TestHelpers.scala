@@ -37,8 +37,6 @@ object TestHelpers {
 
   val kingKickers = Kickers("KD", "KS")
 
-  val fiveSevenKickers = Kickers("5H", "7D")
-
   // HandStatuses
   val royalFlushStatus = HandStatus(RoyalFlush)
   val straightFlushWithQueenKickerStatus = HandStatus(StraightFlush, queenCKicker)
