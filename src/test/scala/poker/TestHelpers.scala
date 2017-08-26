@@ -12,6 +12,8 @@ object TestHelpers {
 
   val fullHouseHand = Hand("AS", "KD", "AC", "KS", "AD")
 
+  val flushHand = Hand("8H", "2H", "JH", "TH", "5H")
+
   val straightHand = Hand("7S", "8H", "9S", "TH", "JC")
   val straightHandMixed = Hand("TH", "7S", "9S", "JC", "8H")
 
@@ -22,6 +24,7 @@ object TestHelpers {
   // Kickers
   val aceKicker = Kickers("AC")
   val queenKicker = Kickers("QC")
+  val jackKicker = Kickers("JH")
   val sixKicker = Kickers("6D")
   val twoKicker = Kickers("2D")
 
