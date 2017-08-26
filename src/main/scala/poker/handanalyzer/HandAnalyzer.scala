@@ -23,14 +23,13 @@ object HandAnalyzer {
       new FlushAnalyzer,
       new StraightAnalyzer,
       new ThreeOfAKindAnalyzer,
-      new TwoPairAnalyzer,
-      new OnePairAnalyzer,
+      //new TwoPairAnalyzer,
+      //new OnePairAnalyzer,
       new HighCardAnalyzer
     )
 
   def classify(hand: Hand): HandStatus = {
-    //all.map(_.analyze(hand)).find(HandStatus.nonEmpty) match {
-    Seq(new RoyalFlushAnalyzer, new StraightFlushAnalyzer, new HighCardAnalyzer).map(_.analyze(hand)).find(HandStatus.nonEmpty) match {
+    all.map(_.analyze(hand)).find(HandStatus.nonEmpty) match {
       case Some(handStatus) => handStatus
       case _ => throw new Error("$hand could not be analyzed!")
     }

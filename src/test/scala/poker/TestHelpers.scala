@@ -1,5 +1,7 @@
 package poker
 
+import poker.HandType.{HighCard, RoyalFlush, StraightFlush, TwoPair}
+
 object TestHelpers {
   // Hands
   val royalFlushHand = Hand("TC", "JC", "QC", "KC", "AC")
@@ -17,6 +19,8 @@ object TestHelpers {
   val straightHand = Hand("7S", "8H", "9S", "TH", "JC")
   val straightHandMixed = Hand("TH", "7S", "9S", "JC", "8H")
 
+  val threeOfAKindHand = Hand("5H", "TC", "TH", "7D", "TD")
+
   val twoPairHand = Hand("KC", "KS", "AC", "AS", "6D")
 
   val highCardHand = Hand("AS", "5D", "8H", "TC", "3H")
@@ -31,10 +35,12 @@ object TestHelpers {
 
   val kingKickers = Kickers("KD", "KS")
 
+  val fiveSevenKickers = Kickers("5H", "7D")
+
   // HandStatuses
-  val royalFlushStatus = HandStatus(HandType.RoyalFlush)
-  val straightFlushWithQueenKickerStatus = HandStatus(HandType.StraightFlush, queenCKicker)
-  val straightFlushWithTwoKickerStatus = HandStatus(HandType.StraightFlush, twoDKicker)
-  val twoPairWithSixKickerStatus = HandStatus(HandType.TwoPair, sixDKicker)
-  val highCardStatus = HandStatus(HandType.HighCard, Kickers(highCardHand.sorted))
+  val royalFlushStatus = HandStatus(RoyalFlush)
+  val straightFlushWithQueenKickerStatus = HandStatus(StraightFlush, queenCKicker)
+  val straightFlushWithTwoKickerStatus = HandStatus(StraightFlush, twoDKicker)
+  val twoPairWithSixKickerStatus = HandStatus(TwoPair, sixDKicker)
+  val highCardStatus = HandStatus(HighCard, Kickers(highCardHand.sorted))
 }
