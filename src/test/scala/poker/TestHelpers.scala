@@ -1,6 +1,7 @@
 package poker
 
-import poker.HandType.{HighCard, RoyalFlush, StraightFlush, TwoPair}
+import poker.core.HandType.{HighCard, RoyalFlush, StraightFlush, TwoPair}
+import poker.core.{Hand, HandStatus, Kickers}
 
 object TestHelpers {
   // Hands

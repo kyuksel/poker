@@ -3,6 +3,7 @@ package poker
 import org.scalatest.FunSuite
 import Application._
 import TestHelpers._
+import poker.core.Card
 
 final class ApplicationTest extends FunSuite {
   test("determineWinners") {

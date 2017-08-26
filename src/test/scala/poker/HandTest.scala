@@ -1,6 +1,7 @@
 package poker
 
 import org.scalatest.FunSuite
+import poker.core.{Card, Hand}
 
 final class HandTest extends FunSuite {
   import TestHelpers._

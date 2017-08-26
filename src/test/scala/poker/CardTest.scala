@@ -1,5 +1,7 @@
 package poker
 
+import poker.core.{Card, Rank, Suit}
+
 final class CardTest extends org.scalatest.FunSuite {
   import Card._
 

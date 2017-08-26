@@ -1,6 +1,7 @@
 package poker
 
 import org.scalatest.FunSuite
+import poker.core.Kickers
 
 final class KickersTest extends FunSuite {
   test("toString") {

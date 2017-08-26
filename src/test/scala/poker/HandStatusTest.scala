@@ -2,6 +2,7 @@ package poker
 
 import org.scalatest.FunSuite
 import TestHelpers._
+import poker.core.{HandStatus, HandType, Kickers}
 
 final class HandStatusTest extends FunSuite {
   test("compare") {

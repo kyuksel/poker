@@ -1,8 +1,12 @@
 package poker
 
-import poker.handanalyzer.HandAnalyzer.classify
+import org.json4s._
+import org.json4s.native.JsonMethods._
 
-object Application extends App {
+import poker.core.{Card, Hand, HandStatus}
+import poker.core.handanalyzer.HandAnalyzer.classify
+
+object Application extends {
   def determineWinners(hands: Hand*): Set[Hand] = {
     val handsByStatus: Map[HandStatus, Seq[Hand]] = hands.groupBy(classify)
 
@@ -19,4 +23,6 @@ object Application extends App {
 
     determineWinners(allPossibleHands: _*)
   }
+
+  def parseHand(handStr: String) = ???
 }
