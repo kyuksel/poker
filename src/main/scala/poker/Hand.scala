@@ -1,9 +1,7 @@
 package poker
 
 /** Set of five poker cards */
-final class Hand private (val cs: Vector[Card]) {
-  def cards: Traversable[Card] = cs
-
+final class Hand private (cs: Vector[Card]) {
   def hasConsecutiveCards: Boolean = hasConsecutiveCardsStartingWith(lowestRank)
 
   def hasConsecutiveCardsStartingWith(start: Char): Boolean = {
@@ -14,10 +12,12 @@ final class Hand private (val cs: Vector[Card]) {
     ranksSorted == Vector.tabulate(length)(_ + start)
   }
 
-  def isSameAs(that: Hand): Boolean = this.cs == that.cs
+  def isSameAs(that: Hand): Boolean = this.cards == that.cards
   def isNotSameAs(that: Hand): Boolean = !isSameAs(that)
 
   override def toString: String = s"Hand(${cs.toString})"
+
+  lazy val cards: Traversable[Card] = cs
 
   lazy val hasSameSuit: Boolean = suits.toSet.size == 1
 
@@ -44,16 +44,14 @@ object Hand {
     new Hand(cards.toVector)
   }
 
-  def apply(string: String, strings: String*): Hand = {
-    Hand((string +: strings.toVector).map(Card(_)))
-  }
+  def apply(strings: String*): Hand = apply(strings.map(Card(_)))
 
   private def validate(cards: Traversable[Card]): Unit = {
-    val handSize = cards.size
+    val handSize = cards.toSet.size
 
     require(
       handSize == 5,
-      s"Invalid hand: Expected 5 cards but found $handSize"
+      s"Invalid hand: Expected 5 distinct cards but found $handSize: [${cards.mkString(", ")}]"
     )
   }
 }

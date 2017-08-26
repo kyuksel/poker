@@ -8,10 +8,10 @@ final class HighCardAnalyzerTest extends FunSuite {
   test("analyze") {
     val highCardAnalyzer = new HighCardAnalyzer
 
-    assert(highCardAnalyzer.analyze(royalFlush) === HandStatus(HandType.HighCard, Kickers(royalFlush)))
-    assert(highCardAnalyzer.analyze(royalFlushMixed) === HandStatus(HandType.HighCard, Kickers(royalFlush)))
-    assert(highCardAnalyzer.analyze(straightFlush) === HandStatus(HandType.HighCard, Kickers(straightFlush)))
-    assert(highCardAnalyzer.analyze(straightFlushMixed) === HandStatus(HandType.HighCard, Kickers(straightFlush)))
-    assert(highCardAnalyzer.analyze(highCard) === highCardStatus)
+    assert(highCardAnalyzer.analyze(royalFlushHand) === HandStatus(HandType.HighCard, Kickers(royalFlushHand)))
+    assert(highCardAnalyzer.analyze(royalFlushHandMixed) === HandStatus(HandType.HighCard, Kickers(royalFlushHand)))
+    assert(highCardAnalyzer.analyze(straightFlushHand) === HandStatus(HandType.HighCard, Kickers(straightFlushHand)))
+    assert(highCardAnalyzer.analyze(straightFlushHandMixed) === HandStatus(HandType.HighCard, Kickers(straightFlushHand)))
+    assert(highCardAnalyzer.analyze(highCardHand) === highCardStatus)
   }
 }

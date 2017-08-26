@@ -4,6 +4,12 @@ sealed trait HandType extends Ordered[HandType] {
   /** 0-based ranking of a hand type */
   def strength: Int
 
+  /**
+    * @param kickers Kicker card(s) to combine with this [[HandType]]
+    * @return [[poker.HandStatus]] with this [[poker.HandType]] and kickers
+    */
+  final def and(kickers: Kickers): HandStatus = HandStatus(this, kickers)
+
   override def compare(that: HandType): Int = this.strength - that.strength
 }
 
