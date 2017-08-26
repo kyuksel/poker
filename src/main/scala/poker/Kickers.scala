@@ -20,9 +20,7 @@ final case class Kickers(cs: Traversable[Card]) extends Ordered[Kickers] {
 object Kickers {
   def apply(card: Card): Kickers = Kickers(Vector(card))
 
-  def apply(string: String, strings: String*): Kickers = {
-    Kickers((string +: strings.toVector).map(Card(_)))
-  }
+  def apply(strings: String*): Kickers = Kickers(strings.map(Card(_)))
 
   def apply(hand: Hand): Kickers = Kickers(hand.cards)
 }

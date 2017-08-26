@@ -23,8 +23,8 @@ object HandAnalyzer {
       new FlushAnalyzer,
       new StraightAnalyzer,
       new ThreeOfAKindAnalyzer,
-      //new TwoPairAnalyzer,
-      //new OnePairAnalyzer,
+      new TwoPairAnalyzer,
+      new OnePairAnalyzer,
       new HighCardAnalyzer
     )
 
