@@ -7,10 +7,8 @@ final class FourOfAKindAnalyzer extends HandAnalyzer {
     * Record the fifth card as the kicker.
     */
   override def doAnalyze(hand: Hand): HandStatus = {
-    val cardsByRank = hand.cards.groupBy(_.rank)
-
-    if (cardsByRank.exists(_._2.size == 4)) {
-      val kickerOpt = cardsByRank.find(_._2.size == 1).map(_._2)
+    if (hand.existsNCardsBySameRank(4)) {
+      val kickerOpt = hand.findNCardsBySameRank(1)
 
       assert(kickerOpt.nonEmpty, s"A ${HandType.FourOfAKind} must have one card of another rank")
 

@@ -10,6 +10,8 @@ object TestHelpers {
 
   val fourOfAKindHand = Hand("AS", "AD", "2D", "AC", "AH")
 
+  val fullHouseHand = Hand("AS", "KD", "AC", "KS", "AD")
+
   val straightHand = Hand("7S", "8H", "9S", "TH", "JC")
   val straightHandMixed = Hand("TH", "7S", "9S", "JC", "8H")
 
@@ -22,6 +24,8 @@ object TestHelpers {
   val queenKicker = Kickers("QC")
   val sixKicker = Kickers("6D")
   val twoKicker = Kickers("2D")
+
+  val kingKickers = Kickers("KD", "KS")
 
   // HandStatuses
   val royalFlushStatus = HandStatus(HandType.RoyalFlush)
