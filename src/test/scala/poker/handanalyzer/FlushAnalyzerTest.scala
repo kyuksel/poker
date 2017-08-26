@@ -9,11 +9,11 @@ final class FlushAnalyzerTest extends FunSuite {
   test("analyze") {
     val analyzer = new FlushAnalyzer
 
-    assert(analyzer.analyze(royalFlushHand) === (Flush and aceKicker))
-    assert(analyzer.analyze(royalFlushHandMixed) === (Flush and aceKicker))
-    assert(analyzer.analyze(straightFlushHand) === (Flush and queenKicker))
-    assert(analyzer.analyze(straightFlushHandMixed) === (Flush and queenKicker))
-    assert(analyzer.analyze(flushHand) === (Flush and jackKicker))
+    assert(analyzer.analyze(royalFlushHand) === (Flush and aceCKicker))
+    assert(analyzer.analyze(royalFlushHandMixed) === (Flush and aceCKicker))
+    assert(analyzer.analyze(straightFlushHand) === (Flush and queenCKicker))
+    assert(analyzer.analyze(straightFlushHandMixed) === (Flush and queenCKicker))
+    assert(analyzer.analyze(flushHand) === (Flush and jackHKicker))
     assert(analyzer.analyze(twoPairHand) === HandStatus.none)
   }
 }

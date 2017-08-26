@@ -22,18 +22,19 @@ object TestHelpers {
   val highCardHand = Hand("AS", "5D", "8H", "TC", "3H")
 
   // Kickers
-  val aceKicker = Kickers("AC")
-  val queenKicker = Kickers("QC")
-  val jackKicker = Kickers("JH")
-  val sixKicker = Kickers("6D")
-  val twoKicker = Kickers("2D")
+  val aceCKicker = Kickers("AC")
+  val queenCKicker = Kickers("QC")
+  val jackHKicker = Kickers("JH")
+  val jackCKicker = Kickers("JC")
+  val sixDKicker = Kickers("6D")
+  val twoDKicker = Kickers("2D")
 
   val kingKickers = Kickers("KD", "KS")
 
   // HandStatuses
   val royalFlushStatus = HandStatus(HandType.RoyalFlush)
-  val straightFlushWithQueenKickerStatus = HandStatus(HandType.StraightFlush, queenKicker)
-  val straightFlushWithTwoKickerStatus = HandStatus(HandType.StraightFlush, twoKicker)
-  val twoPairWithSixKickerStatus = HandStatus(HandType.TwoPair, sixKicker)
+  val straightFlushWithQueenKickerStatus = HandStatus(HandType.StraightFlush, queenCKicker)
+  val straightFlushWithTwoKickerStatus = HandStatus(HandType.StraightFlush, twoDKicker)
+  val twoPairWithSixKickerStatus = HandStatus(HandType.TwoPair, sixDKicker)
   val highCardStatus = HandStatus(HandType.HighCard, Kickers(highCardHand.sorted))
 }

@@ -14,8 +14,8 @@ final class KickersTest extends FunSuite {
   test("compare") {
     import TestHelpers._
 
-    assert(aceKicker > queenKicker)
-    assert(queenKicker === queenKicker)
+    assert(aceCKicker > queenCKicker)
+    assert(queenCKicker === queenCKicker)
     assert(Kickers("7D", "8H") < Kickers("2C", "TS"))
   }
 }
