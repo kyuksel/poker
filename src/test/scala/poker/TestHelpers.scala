@@ -23,6 +23,8 @@ object TestHelpers {
 
   val twoPairHand = Hand("KC", "KS", "AC", "AS", "6D")
 
+  val onePairHand = Hand("KC", "KS", "AC", "4S", "6D")
+
   val highCardHand = Hand("AS", "5D", "8H", "TC", "3H")
 
   // Kickers

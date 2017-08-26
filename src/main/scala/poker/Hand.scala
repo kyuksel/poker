@@ -21,7 +21,7 @@ final class Hand private (cs: Vector[Card]) {
   override def toString: String = s"Hand(${cs.toString})"
 
   lazy val cards: Traversable[Card] = cs
-  lazy val cardsByRank: Map[Rank, Traversable[Card]] = cards.groupBy(_.rank)
+  lazy val cardsByRank: Map[Rank, Traversable[Card]] = Hand.byRank(cards)
 
   lazy val hasSameSuit: Boolean = suits.toSet.size == 1
 
@@ -49,6 +49,10 @@ object Hand {
   }
 
   def apply(strings: String*): Hand = apply(strings.map(Card(_)))
+
+  def existsNCardsBySameRank(cards: Traversable[Card], n: Int): Boolean = byRank(cards).exists(_._2.size == n)
+
+  private def byRank(cards: Traversable[Card]): Map[Rank, Traversable[Card]] = cards.groupBy(_.rank)
 
   private def validate(cards: Traversable[Card]): Unit = {
     val handSize = cards.toSet.size
