@@ -1,8 +1,5 @@
 package poker
 
-import org.json4s._
-import org.json4s.native.JsonMethods._
-
 import poker.core.{Card, Hand, HandStatus}
 import poker.core.handanalyzer.HandAnalyzer.classify
 
@@ -23,6 +20,4 @@ object Application extends {
 
     determineWinners(allPossibleHands: _*)
   }
-
-  def parseHand(handStr: String) = ???
 }

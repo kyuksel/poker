@@ -3,6 +3,20 @@ package poker
 import scala.collection.immutable.HashMap
 
 object Utils {
+  def parseJsonArray(s: String): Traversable[String] = {
+    import spray.json._
+    import DefaultJsonProtocol._
+
+    s.parseJson.convertTo[Iterable[String]]
+  }
+
+  def parseJsonArrayOfArrays(s: String): Traversable[Traversable[String]] = {
+    import spray.json._
+    import DefaultJsonProtocol._
+
+    s.parseJson.convertTo[Iterable[Iterable[String]]]
+  }
+
   def rankAsInt(c: Char): Int = ranksToInts(c)
 
   lazy val ranksToInts: HashMap[Char, Int] = HashMap(
