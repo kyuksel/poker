@@ -15,5 +15,5 @@ classify := {
   val args: Seq[String] = spaceDelimited("<arg>").parsed
 }
 
-fullRunInputTask(classify, Compile, "poker.Classification")
+fullRunInputTask(classify, Compile, "poker.app.Classification")
 

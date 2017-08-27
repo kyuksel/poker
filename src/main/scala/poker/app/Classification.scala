@@ -1,24 +1,24 @@
-package poker
+package poker.app
 
-import poker.core.{Card, Hand, HandStatus}
-import poker.core.handanalyzer.HandAnalyzer.classify
 import poker.Utils._
+import poker.core.handanalyzer.HandAnalyzer.classify
+import poker.core.{Card, Hand, HandStatus}
 
 object Classification extends App {
   private val lines = getLines(args)
 
   require(
-    lines.length == 1,
+    lines.size == 1,
     "The file should contain a single line with a JSON array " +
       "such as [\"TC\", \"JC\", \"QC\", \"KC\", \"AC\"]" +
-      s"Found ${lines.length}"
+      s"Found ${lines.size}"
   )
 
   private val jsonArray = lines.head
 
   doMain(jsonArray)
 
-  private[poker] def doMain(jsonArray: String): HandStatus = {
+  private[app] def doMain(jsonArray: String): HandStatus = {
     val parsedHandStr = parseJsonArray(jsonArray)
     val parsedHandStrSize = parsedHandStr.size
 

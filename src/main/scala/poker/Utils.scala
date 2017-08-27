@@ -18,7 +18,7 @@ object Utils {
     s.parseJson.convertTo[Iterable[Iterable[String]]]
   }
 
-  def getLines(args: Array[String]): Vector[String] = {
+  def getLines(args: Array[String]): Traversable[String] = {
     require(
       args.length == 1,
       "Invalid input. Expected a single file path."

@@ -1,10 +1,10 @@
-package poker
+package poker.app
 
 import org.scalatest.FunSuite
-import Classification._
-import TestHelpers._
+import poker.app.Classification._
 import poker.core.HandType.RoyalFlush
 import poker.core.HandStatus
+import poker.TestHelpers._
 
 final class ClassificationTest extends FunSuite {
   test("doMain") {
