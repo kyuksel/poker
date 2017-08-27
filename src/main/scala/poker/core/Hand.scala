@@ -2,7 +2,7 @@ package poker.core
 
 import poker.Utils
 
-/** Set of five poker cards */
+/** Container for five poker cards */
 final class Hand private (cs: Vector[Card]) {
   def hasConsecutiveCards: Boolean = hasConsecutiveCardsStartingWith(lowestRank)
 

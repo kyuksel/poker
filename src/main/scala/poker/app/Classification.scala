@@ -4,6 +4,11 @@ import poker.Utils._
 import poker.core.handanalyzer.HandAnalyzer.classify
 import poker.core.{Card, Hand, HandStatus}
 
+/**
+  * App that takes a path to a file that contains a five-card hand
+  * as a JSON array, and determines the hand's category along
+  * with tie-breaking information as necessary
+  */
 object Classification extends App {
   private val lines = getLines(args)
 

@@ -21,3 +21,8 @@ winner := {
 }
 fullRunInputTask(winner, Compile, "poker.app.Winner")
 
+lazy val best = inputKey[Unit]("Find best subset of five cards out of many")
+best := {
+  val args: Seq[String] = spaceDelimited("<arg>").parsed
+}
+fullRunInputTask(best, Compile, "poker.app.Best")

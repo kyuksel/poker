@@ -4,10 +4,14 @@ import poker.Utils._
 import poker.core.handanalyzer.HandAnalyzer._
 import poker.core.{Card, Hand}
 
+/**
+  * App that takes two or more five-card hands and determines
+  * the winner(s)
+  */
 object Winner extends App {
   private val lines = getLines(args)
 
-  val winners = doMain(lines)
+  private val winners = doMain(lines)
 
   if (winners.size == 1) {
     val winner = winners.head
