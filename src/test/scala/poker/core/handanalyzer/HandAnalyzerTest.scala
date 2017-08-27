@@ -23,11 +23,25 @@ final class HandAnalyzerTest extends FunSuite {
   test("determineWinners") {
     assert(determineWinners(royalFlushHand, straightFlushHand) === Set(royalFlushHand))
     assert(determineWinners(straightFlushHand, straightFlushHandMixed) === Set(straightFlushHand, straightFlushHandMixed))
+    assert(determineWinners(twoPairHand, flushHand) === Set(flushHand))
+    assert(determineWinners(onePairHand, onePairHandWeaker) === Set(onePairHand))
+    // Fails due to known bug
+    //assert(determineWinners(threeOfAKindHand, threeOfAKindHandWeaker) === Set(threeOfAKindHand))
   }
 
   test("bestPossibleHands") {
-    val royalFlushPlusOneMoreCard =
+    val royalFlushPlusSevenMoreCards =
       Vector("AD", "2S", "JC", "KD", "7S", "TC", "3H", "AC", "JS", "QC", "KC", "2D").map(Card(_))
-    assert(bestPossibleHands(royalFlushPlusOneMoreCard: _*).head.cards === royalFlushHandMixed.cards)
+    assert(bestPossibleHands(royalFlushPlusSevenMoreCards: _*).head.cards === royalFlushHandMixed.cards)
+
+    val straightHandPlusOneMoreCard =
+      Vector("7S", "8H", "9S", "TH", "JC", "3H").map(Card(_))
+    assert(bestPossibleHands(straightHandPlusOneMoreCard: _*).head.cards === straightHand.cards)
+
+    /* Fails due to known bug
+    val twoPairHandPlusTwoMoreCards =
+      Vector("KC", "KS", "AC", "AS", "6D", "TC", "3H").map(Card(_))
+    assert(bestPossibleHands(twoPairHandPlusTwoMoreCards: _*).head.cards === twoPairHand.cards)
+    */
   }
 }

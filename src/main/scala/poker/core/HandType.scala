@@ -15,6 +15,7 @@ sealed trait HandType extends Ordered[HandType] {
   override def compare(that: HandType): Int = this.strength - that.strength
 }
 
+// TODO Capture the (non-kicker) cards along with type for accurate comparison later
 object HandType {
   case object RoyalFlush extends HandType {
     override val strength: Int = 9

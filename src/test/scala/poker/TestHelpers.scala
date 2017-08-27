@@ -24,10 +24,12 @@ object TestHelpers {
   val straightHandMixed = Hand("TH", "7S", "9S", "JC", "8H")
 
   val threeOfAKindHand = Hand("5H", "TC", "TH", "7D", "TD")
+  val threeOfAKindHandWeaker = Hand("5H", "8C", "8H", "AD", "8D")
 
   val twoPairHand = Hand("KC", "KS", "AC", "AS", "6D")
 
   val onePairHand = Hand("KC", "KS", "AC", "4S", "6D")
+  val onePairHandWeaker = Hand("KC", "KS", "9C", "4S", "6D")
 
   val highCardHand = Hand("AS", "5D", "8H", "TC", "3H")
 

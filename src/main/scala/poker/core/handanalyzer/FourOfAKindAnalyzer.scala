@@ -1,6 +1,5 @@
 package poker.core.handanalyzer
 
-import poker._
 import poker.core.{Hand, HandStatus, HandType, Kickers}
 
 final class FourOfAKindAnalyzer extends HandAnalyzer {
