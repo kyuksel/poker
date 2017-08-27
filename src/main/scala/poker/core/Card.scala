@@ -4,9 +4,6 @@ import java.util.regex.Pattern
 
 import poker.Utils
 
-/**
-  *
-  */
 final case class Card private(r: Rank, s: Suit) extends Ordered[Card] {
   def rank: Rank = r
 
