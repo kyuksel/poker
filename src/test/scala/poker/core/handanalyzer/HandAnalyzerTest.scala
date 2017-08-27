@@ -1,10 +1,10 @@
 package poker.core.handanalyzer
 
 import org.scalatest.FunSuite
-import poker.core.handanalyzer.HandAnalyzer.classify
+import poker.core.handanalyzer.HandAnalyzer._
 import poker.TestHelpers._
 import poker.core.HandType._
-import poker.core.{HandStatus, Kickers}
+import poker.core.{Card, HandStatus, Kickers}
 
 final class HandAnalyzerTest extends FunSuite {
   test("classify") {
@@ -18,5 +18,16 @@ final class HandAnalyzerTest extends FunSuite {
     assert(classify(twoPairHand) === (TwoPair and Kickers(twoPairHand.sorted.cards)))
     assert(classify(onePairHand) === (OnePair and Kickers(onePairHand.sorted.cards)))
     assert(classify(highCardHand) === (HighCard and Kickers(highCardHand.sorted.cards)))
+  }
+
+  test("determineWinners") {
+    assert(determineWinners(royalFlushHand, straightFlushHand) === Set(royalFlushHand))
+    assert(determineWinners(straightFlushHand, straightFlushHandMixed) === Set(straightFlushHand, straightFlushHandMixed))
+  }
+
+  test("bestPossibleHands") {
+    val royalFlushPlusOneMoreCard =
+      Vector("AD", "2S", "JC", "KD", "7S", "TC", "3H", "AC", "JS", "QC", "KC", "2D").map(Card(_))
+    assert(bestPossibleHands(royalFlushPlusOneMoreCard: _*).head.cards === royalFlushHandMixed.cards)
   }
 }

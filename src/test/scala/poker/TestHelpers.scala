@@ -4,6 +4,9 @@ import poker.core.HandType.{HighCard, RoyalFlush, StraightFlush, TwoPair}
 import poker.core.{Hand, HandStatus, Kickers}
 
 object TestHelpers {
+  // Hand String Arrays
+  val royalFlushStrArray = """["TC", "JC", "QC", "KC", "AC"]"""
+
   // Hands
   val royalFlushHand = Hand("TC", "JC", "QC", "KC", "AC")
   val royalFlushHandMixed = Hand("JC", "TC", "AC", "QC", "KC")

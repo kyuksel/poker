@@ -1,6 +1,7 @@
 package poker
 
 import scala.collection.immutable.HashMap
+import scala.io.Source.fromFile
 
 object Utils {
   def parseJsonArray(s: String): Traversable[String] = {
@@ -15,6 +16,15 @@ object Utils {
     import DefaultJsonProtocol._
 
     s.parseJson.convertTo[Iterable[Iterable[String]]]
+  }
+
+  def getLines(args: Array[String]): Vector[String] = {
+    require(
+      args.length == 1,
+      "Invalid input. Expected a single file path."
+    )
+
+    fromFile(args.head).getLines.toVector
   }
 
   def rankAsInt(c: Char): Int = ranksToInts(c)
