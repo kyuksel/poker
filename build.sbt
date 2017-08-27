@@ -10,10 +10,14 @@ lazy val testDependencies = Seq("org.scalatest" %% "scalatest" % "3.0.0" % "test
 libraryDependencies ++= (mainDependencies ++ testDependencies)
 
 lazy val classify = inputKey[Unit]("Classify hand")
-
 classify := {
   val args: Seq[String] = spaceDelimited("<arg>").parsed
 }
-
 fullRunInputTask(classify, Compile, "poker.app.Classification")
+
+lazy val winner = inputKey[Unit]("Find winner of two or more hands")
+winner := {
+  val args: Seq[String] = spaceDelimited("<arg>").parsed
+}
+fullRunInputTask(winner, Compile, "poker.app.Winner")
 

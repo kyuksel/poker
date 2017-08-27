@@ -20,7 +20,7 @@ final class Hand private (cs: Vector[Card]) {
   def existsNCardsBySameRank(n: Int): Boolean = cardsByRank.exists(_._2.size == n)
   def findNCardsBySameRank(n: Int): Option[Traversable[Card]] = cardsByRank.find(_._2.size == n).map(_._2)
 
-  override def toString: String = s"Hand(${cs.toString})"
+  override def toString: String = s"[${cards.mkString(", ")}]"
 
   lazy val cards: Traversable[Card] = cs
   lazy val cardsByRank: Map[Rank, Traversable[Card]] = Hand.byRank(cards)

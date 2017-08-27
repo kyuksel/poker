@@ -16,7 +16,9 @@ object Classification extends App {
 
   private val jsonArray = lines.head
 
-  doMain(jsonArray)
+  private val status = doMain(jsonArray)
+
+  println(s"The hand is a $status.")
 
   private[app] def doMain(jsonArray: String): HandStatus = {
     val parsedHandStr = parseJsonArray(jsonArray)
@@ -30,8 +32,6 @@ object Classification extends App {
     val hand = Hand(parsedHandStr.map(Card(_)))
 
     val status = classify(hand)
-
-    println(status)
 
     status
   }

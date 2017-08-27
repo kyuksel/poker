@@ -21,7 +21,8 @@ final class HandAnalyzerTest extends FunSuite {
   }
 
   test("determineWinners") {
-    assert(determineWinners(royalFlushHand, straightFlushHand) === Set(royalFlushHand))
+    assert(determineWinners(royalFlushHand, straightFlushHand, twoPairHand) === Set(royalFlushHand))
+    assert(determineWinners(straightFlushHand, threeOfAKindHand, twoPairHand) === Set(straightFlushHand))
     assert(determineWinners(straightFlushHand, straightFlushHandMixed) === Set(straightFlushHand, straightFlushHandMixed))
     assert(determineWinners(twoPairHand, flushHand) === Set(flushHand))
     assert(determineWinners(onePairHand, onePairHandWeaker) === Set(onePairHand))
