@@ -145,6 +145,7 @@ with testing for less strong hands. It stops as soon as it finds a matching one.
 ## Future Work
 
 * Fix the [tie-breaking bug](https://github.com/kyuksel/poker/issues/3)
+* Write more tests for `apps`
 * Benchmark performance for finding the best hand out of a large number of hands
 * Allow specifying input directly on the command line
 * Enforce coding style via ScalaStyle
